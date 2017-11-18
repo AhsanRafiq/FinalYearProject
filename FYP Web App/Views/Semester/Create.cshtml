@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Bootstrap Admin Template</title>
+    <!-- Bootstrap Core CSS -->
+    <!-- Custom CSS -->
+    <link href=@Url.Content("~/Content/CSS/bootstrap.min.css") rel="stylesheet" />
+
+    <!-- Morris Charts CSS -->
+    <link href=@Url.Content("~/Content/CSS/sb-admin.css") rel="stylesheet" />
+
+    <link href=@Url.Content("~/Content/CSS/morris.css") rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href=@Url.Content("~/Content/CSS/bootstrap-select.min.css") rel="stylesheet" />
+
+    <link href=@Url.Content("~/Content/font-awesome.min.css") rel="stylesheet" />
+
+    <script src="~/Ajax Scripts/Semester.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Admin")">Admin Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li ">
+                        <a href="@Url.Action("Index", "Admin")"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "Session")"><i class="fa fa-fw fa-bar-chart-o"></i>Session</a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("Add", "Semester")"><i class="fa fa-fw fa-table"></i>Semester</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "Section")"><i class="fa fa-fw fa-edit"></i>Section</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "Course")"><i class="fa fa-fw fa-edit"></i>Course</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "Student")"><i class="fa fa-fw fa-edit"></i>Student</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "Teacher")"><i class="fa fa-fw fa-edit"></i>Teacher</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "MidTerm")"><i class="fa fa-fw fa-edit"></i>Mid Term</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Add", "CTR")"><i class="fa fa-fw fa-edit"></i>Assign Teacher</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper" style="height: 800px">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            ADD SEMESTER
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Please Fill The Form Below
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+
+
+                        <div class="form-group">
+                            <h3>
+                                <label class="label label-default">Session</label>
+                            </h3>
+
+                            <Select class="selectpicker" id="sessionSelectOptions"></Select>
+                        </div>
+                        <div class="form-group">
+
+                            <h3>
+                                <label class="label label-default">Semester No</label>
+                            </h3>
+
+                            <div id="selectSemesterNo">
+
+                                <Select class="selectpicker" id="semesterNoSelect">
+
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </Select>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <h3>
+                                <label class="label label-default">Semester Start Date</label>
+                            </h3>
+
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" id="startDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <h3><label class="label label-default">Semester End Date</label></h3>
+
+
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" id="endDate">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <h3>
+                                <label class="label label-default">Active</label>
+                            </h3>
+
+
+                            <div id="activeSelect">
+                                <Select class="selectpicker" id="selectActive">
+
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </Select>
+
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+
+                        <button type="button" onclick="insert()" class="btn btn-primary">Save</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src=@Url.Content("~/Script/jquery.js")></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+
+
+    <script src=@Url.Content("~/Script/bootstrap.min.js")></script>
+    <!-- Morris Charts JavaScript -->
+
+    <script src=@Url.Content("~/Script/raphael.min.js")></script>
+
+
+    <script src=@Url.Content("~/Script/morris.min.js")></script>
+
+    <script src=@Url.Content("~/Script/morris-data.js")></script>
+
+    <script src=@Url.Content("~/Script/bootstrap-select.min.js")></script>
+
+    <script>getSessions()</script>
+
+
+    <div class="modal fade" id="resposeOfUpdation" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Semester Successfully Added to Database</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Other Semester is already is active-->
+    <div class="modal fade" id="resposeOfActive" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Some semester is already active</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal For Primary key Violation -->
+    <div class="modal fade" id="primaryKeyViolationModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Semester Already Exits</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal For Wrong Date Interval -->
+    <div class="modal fade" id="wrongDateIntervalModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Time Duration is wrong</h4>
+                    <br />
+                    <br />
+                    <h5><b>For Example</b></h5>
+
+                    <p><i>For BSCS Duration is 4 years</i></p>
+                    <p><i>For BSCS Duration is 2 years</i></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

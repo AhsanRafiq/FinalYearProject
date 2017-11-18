@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dashboard</title>
+    <!-- Bootstrap Core CSS -->
+    <link href=@Url.Content("~/Content/CSS/bootstrap.min.css") rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href=@Url.Content("~/Content/CSS/sb-admin.css") rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href=@Url.Content("~/Content/CSS/morris.css") rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href=@Url.Content("~/Content/font-awesome.min.css") rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="f"/>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="@Url.Action("Index","TeacherDashboard")">Teacher Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user center-block"></i>
+                        @ViewBag.TeacherName
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("Logout","TeacherDashboard")"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="@Url.Action("Index","TeacherDashboard")"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Index","Paper")><i class="fa fa-fw fa-bar-chart-o"></i>Generate Paper</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("SetPaper","Paper")><i class="fa fa-fw fa-table"></i>Set Paper</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Add", "Notification")><i class="fa fa-fw fa-bar-chart-o"></i>Notification</a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Add", "Material")><i class="fa fa-fw fa-table"></i>Material</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Dashboard <small>General Overview</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <strong>Please Select the method :</strong>
+                        </div>
+                        <div class="panel-group col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">View Papers</div>
+                                <div class="panel-body">
+                                    <img src="~/Image/paper one.png" class="center-block" alt="Cinque Terre" width="200" height="200">
+                                 
+                                        <a href="@Url.Action("Index","Paper")" class="center-block">View Papers</a>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">View Notification</div>
+                                <div class="panel-body">
+                                    <img src="~/Image/noti.png" class="center-block" alt="Cinque Terre" width="200" height="200">
+                                    <button type="button" class="btn btn-primary col-md-12">
+                                        <a href="@Url.Action("Index","Notification")" style="color: white">View Notification</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">View Material</div>
+                                <div class="panel-body">
+                                    <img src="~/Image/folder.png" class="center-block" alt="Cinque Terre" width="200" height="200">
+                                    <button type="button" class="btn btn-primary col-md-12">
+                                        <a href="@Url.Action("Index","Material")" style="color: white">View Material</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">View Result</div>
+                                <div class="panel-body">
+                                    <img src="~/Image/folder.png" class="center-block" alt="Cinque Terre" width="200" height="200">
+                                    <button type="button" class="btn btn-primary col-md-12">
+                                        <a href="@Url.Action("DisplayResult","Student")" style="color: white">View Result</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src=@Url.Content("~/Script/jquery.js")></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src=@Url.Content("~/Script/bootstrap.min.js")></script>
+    <!-- Morris Charts JavaScript -->
+    <script src=@Url.Content("~/Script/raphael.min.js")></script>
+    <script src=@Url.Content("~/Script/morris.min.js")></script>
+    <script src=@Url.Content("~/Script/morris-data.js")></script>
+</body>
+
+</html>

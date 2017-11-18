@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Session List</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href=@Url.Content("~/Content/CSS/bootstrap.min.css") rel="stylesheet" />
+    <!-- Custom CSS -->
+
+    <link href=@Url.Content("~/Content/CSS/sb-admin.css") rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+
+    <link href=@Url.Content("~/Content/CSS/morris.css") rel="stylesheet" />
+    <!-- Custom Fonts -->
+
+    <link href=@Url.Content("~/Content/font-awesome.min.css") rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="f"/>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="@Url.Action("Index","Admin")">Admin Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="@Url.Action("Index", "Session")"><i class="fa fa-fw fa-dashboard"></i> Sesstion</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")"><i class="fa fa-fw fa-dashboard"></i> Back to Dashboard</a>
+                    </li>
+
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper" style="height: 100%">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            View Session
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard">Following are Sessions</i>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-success" onclick="referesh();">Referesh</button>
+
+                <br />
+                <br />
+                <div class="row">
+                    <div>
+                        <table class="table table-striped table-bordered table-hover table-condensed table-responsives text-center">
+
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th class="text-center">Session ID</th>
+                                    <th class="text-center">Program</th>
+                                    <th class="text-center">Start Date</th>
+                                    <th class="text-center">End Date</th>
+                                    <th class="text-center">Actions</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbody"></tbody>
+
+                        </table>
+
+
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /.row -->
+
+
+
+
+
+    <script src="~/Ajax Scripts/Session.js"></script>
+
+    <script src="js/jquery.js"></script>
+    <script src="~/Script/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="~/Script/bootstrap.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="~/Script/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="~/Script/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+    <script src="~/Script/morris-data.js"></script>
+
+    
+
+    <script>list();</script>
+
+
+    <!-- Modal For Session Deletion Response -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Session Deleted</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal For Primary key Violation -->
+    <div class="modal fade" id="primaryKeyViolationModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Session Already Exits</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal For Confirmation of Deletion -->
+    <div id="confirmDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Are you Sure?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="deleteSession()">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal For Field Updation for update-->
+    <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Update Session
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"
+                               for="startDateUpdate">Start Date</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"
+                                   id="startDateUpdate" />
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"
+                               for="endDateUpdate">End Date</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"
+                                   id="endDateUpdate" />
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"
+                               for="programSelectUpdate">Program</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control"
+                                   id="programSelectUpdate" readonly/>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <br />
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="saveButton" class="btn btn-primary" onclick="updateSession();" data-dismiss="modal">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="resposeOfAddNew" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Database Updated</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="updateSessionResponse" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Database Updated</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div> 
+</body>
+
+</html>

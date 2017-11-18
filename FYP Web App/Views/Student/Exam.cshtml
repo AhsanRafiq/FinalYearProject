@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>List Of Papers</title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link href="@Url.Content("~/Content/CSS/bootstrap.min.css")" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Content/CSS/jquery.countdownTimer.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/CSS/sb-admin.css")" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+
+    <link href="@Url.Content("~/Content/CSS/morris.css")" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="@Url.Content("~/Content/CSS/bootstrap-select.min.css")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Font/FontAwesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="f"/>
+    <![endif]-->
+
+    <script src="@Url.Content("~/Ajax Scripts/Student.js")"></script>
+</head>
+
+<body>
+
+    <label id="paperTime">@ViewBag.PaperTime</label>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="admindashboard.html">Student Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+     
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="@Url.Action("Exam","Student")"><i class="fa fa-fw fa-bar-chart-o"></i>Exam</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Dashboard","Student")"><i class="fa fa-fw fa-dashboard"></i>Student Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Exam Session
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="well">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Session</th>
+                                        <td id="sessionName">@ViewBag.Session</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Semester</th>
+                                        <td id="semesterName">@ViewBag.Semester</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <td id="subjectName">@ViewBag.Subject</tdid>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Questions</th>
+                                        <td id="toTalQuestions">@ViewBag.TotalQuestions</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Time</th>
+                                        <td><p id="time"></p></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Question</div>
+                            <div class="panel-body">
+                                <div class="well">
+                                    <label id="questionNo">Q1:</label>
+                                    <label id="questionText"></label>
+                                </div>
+                                <h4>
+                                    <img id="questionImage" width="200" height="200" />
+                                    <br />
+                                    <input type="radio" name="option" id="correctOptionOne"> <label id="optionOne"></label>
+                                    <br />
+                                    <input type="radio" name="option" id="correctOptionTwo"><label id="optionTwo"></label>
+                                    <br />
+                                    <input type="radio" name="option" id="correctOptionThree"><label id="optionThree"></label>
+                                    <br />
+                                    <input type="radio" name="option" id="correctOptionFour"><label id="optionFour"></label>
+                                    <br />
+                                    <button type="button" onclick="previous()" class="btn btn-success">Previous</button>
+                                    <span>|</span>
+                                    <button type="button" onclick="next()" class="btn btn-success">Next</button>
+                                    <span>|</span>
+                                    <button type="button" onclick="saveAns()" class="btn btn-success">Save Ans</button>
+                                    <span>|</span>
+                                    <button type="button" onclick="submit()" class="btn btn-success">Submit</button>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="@Url.Content("~/Script/jquery.js")"></script>
+    <script src="@Url.Content("~/Script/jquery.countdownTimer.min.js")"></script>
+
+    <script src="@Url.Content("~/Script/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Script/raphael.min.js")"></script>
+
+    <script src="@Url.Content("~/Script/morris.min.js")"></script>
+
+    <script src="@Url.Content("~/Script/morris-data.js")"></script>
+
+    <script src="@Url.Content("~/Script/bootstrap-select.min.js")"></script>
+
+    <script>next();</script>
+
+
+
+    <script>timeStart();</script>
+
+    
+
+
+
+</body>
+
+
+
+</html>

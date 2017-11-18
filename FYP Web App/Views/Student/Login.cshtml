@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Examination and Assessment Sysem</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!------------------------------Boostrap------------------------------------------->
+    <! Local Stored Boostrap  -->
+    <link href="~/Content/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/CSS/design.css" rel="stylesheet" />
+    <! Local Stored Boostrap  -->
+    <! CDN !>
+    <!-- Latest compiled and minified CSS -->
+
+    <! CDN !>
+    <!------------------------------Boostrap------------------------------------------->
+
+ 
+
+
+</head>
+<body>
+
+
+    <div id="section1">
+        <div class="col-md-12" style="background: #2f2f2f; height: 114px; width: 100%">
+            <img id="imglogo" src=@Url.Content("~/Image/gculogo.png") width="78px" style="float: left; margin-left:10%; margin-top: 13px">
+
+         
+            <span id="text">
+                <br>
+                GOVERMENT COLLEGE UNIVERSITY <br>
+                DEPARTMENT OF COMPUTER SCIENCEE
+            </span>
+        </div>
+    </div>
+    <div id="section2">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="w3-content w3-section" style="max-width:100%">
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/mainbuil.png") style="width:100%">
+               
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/pic1.jpg") style="width:100%">
+                  
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/pic2.jpg") style="width:100%">
+                   
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/pic3.jpg") style="width:100%">
+                </div>
+                <script>
+                    var myIndex = 0;
+                    carousel();
+
+                    function carousel() {
+                        var i;
+                        var x = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";
+                        }
+                        myIndex++;
+                        if (myIndex > x.length) { myIndex = 1 }
+                        x[myIndex - 1].style.display = "block";
+                        setTimeout(carousel, 3000);
+                    }
+                </script>
+
+
+            </div>
+        </div>
+
+    </div>
+    <div id="section3">
+        <div class="container">
+            <div class="col-md-8">
+
+                <p style="font-family: 'Century Gothic'; font-size: 22pt">
+                    WELCOME TO E EXAMINATION AND <br>
+                    <span style="">ASSESMENT SYSTEM </span>
+                    <hr>
+                </p>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="panel" style="border: solid">
+                    <div class="panel-heading" style="background-color:#2f2f2f">
+                        <p class="login">Student Login</p>
+                    </div>
+                    <div class="panel-body">
+                        <img src=@Url.Content("~/Image/male.png") class="img-rounded center-block" alt="Teacher" width="234" height="279">
+                     
+                        <br>
+                        <form action="@Url.Action("CheckCredentials","Student")" method="post">
+                            <div class="left-inner-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Roll Number"  id="rollNumber" name="rollNumber"/>
+
+                            </div>
+                            <div class="left-inner-addon">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <input type="password"
+                                       class="form-control"
+                                       placeholder="Password" id="password" name="password"/>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary center-block" style="width: 50%">Login</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="section4">
+        <div class="col-md-12" style="width: 100%" id="backcolor">
+            <br>
+            <br>
+            <div class="col-md-4">
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px">
+                </div>
+                <span id="f_1">Visit : <a href="www.gcu.edu.pk">Govertment College University</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/">Department Of Computer Science</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Contact Information : <a href="http://www.gcu.edu.pk/Webmaster.htm">Contact</a></span>
+            </div>
+
+            <div class="col-md-4 col-offset-4 col-md-push-4">
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px">
+                </div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/admissions.html?link=bscs">Admission Information </a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/roadmap.html">Road Department Of Computer Science</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/people.html">Our People</a></span>
+            </div>
+            <div class="col-md-12" id="footer">
+                <p id="f_x" style="text-align: center">© Copyright 2002- GOVERMENT COLLEGE UNIVERSITY , E-EXAMINATION AND ASSESSMENT SYSTEM<p></span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/Script/jquery.js"></script>
+
+
+    <script src="~/Script/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e examination and assessment sysem</title>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/CSS/LoginView/design.css")>
+    <link href=@Url.Content("~/Content/CSS/design.css") rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href=@Url.Content("~/Font/FontAwesome/css/font-awesome.min.css") rel="stylesheet" />
+    <!------------------------------Boostrap------------------------------------------->
+    <! Local Stored Boostrap  -->
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/CSS/bootstrap.min.css")>
+
+
+
+
+
+    <! Local Stored Boostrap  -->
+    <! CDN !>
+    <!-- Latest compiled and minified CSS -->
+
+
+    <! CDN !>
+    <!------------------------------Boostrap------------------------------------------->
+
+   <!-- <link rel="stylesheet" href="~/css/login.css" type="text/css">-->
+    <!------ w3.cc------->
+    <!--  <link rel="stylesheet" href="/lib/w3.css">-->
+
+
+
+</head>
+<body>
+
+
+    <div id="section1">
+
+        <div class="col-md-12" style="background: #2f2f2f; height: 114px; width: 100%">
+            <img id="imglogo" src=@Url.Content("~/Image/gculogo.png") width="78px" style="float: left; margin-left:10%; margin-top: 13px">
+
+            <span id="text">
+                <br>
+                GOVERMENT COLLEGE UNIVERSITY <br>
+                DEPARTMENT OF COMPUTER SCIENCEE
+            </span>
+
+        </div>
+    </div>
+    <div id="section2">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="w3-content w3-section" style="max-width:100%">
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/dCSDepartment.jpg") style="width:100%">
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/mainTower.jpg") style="width:100%">          
+                    <img class="mySlides w3-animate-fading" src=@Url.Content("~/Image/auditorium.jpg") style="width:100%">
+
+                    <script type="text/javascript">
+                        var myIndex = 0;
+                        carousel();
+
+                        function carousel() {
+                            var i;
+                            var x = document.getElementsByClassName("mySlides");
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                            }
+                            myIndex++;
+                            if (myIndex > x.length) { myIndex = 1 }
+                            x[myIndex - 1].style.display = "block";
+                            setTimeout(carousel, 3000);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="section3">
+        <div class="well">
+            <p id="welcome">WELCOME TO E-EXAMINATION AND ASSESSMENT SYSTEM</p>
+        </div>
+
+        <div class="container">
+            <div class="col-lg-4 col-lg-push-2">
+                <div class="panel" style="border: solid">
+                    <div class="panel-heading" style="background-color:#2f2f2f">
+                        <p class="login">Login As Teacher</p>
+                    </div>
+                    <div class="panel-body">
+                        <img src=@Url.Content("~/Image/teacher.png") class="img-rounded center-block" alt="Teacher" width="234" height="279">
+                        <br>
+
+                        <div class="left-inner-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Teacher Name" />
+
+                        </div>
+                        <div class="left-inner-addon">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            <input type="password"
+                                   class="form-control"
+                                   placeholder="Password" />
+                        </div>
+                        <br>
+                        <a href=@Url.Action("Index","AdminDashboard")> <button type="button" class="btn btn-primary center-block" style="width: 50%">Login</button></a>
+                        <br>
+                        <div>
+                            <span>
+                                <!-- Trigger the modal with a button -->
+                                <a data-toggle="modal" id="signup" data-target="#myModal">Sign Up</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Please Fill The Form</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="left-inner-addon">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           placeholder="Teacher Name" />
+
+                                                </div>
+                                                <div class="left-inner-addon">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                    <input type="password"
+                                                           class="form-control"
+                                                           placeholder="Password" />
+                                                </div>
+                                                <div class="left-inner-addon">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                    <input type="password"
+                                                           class="form-control"
+                                                           placeholder="Re Enter Password" />
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary">Sign Up</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <a data-toggle="modal" id="forget" style="float: right" data-target="#myModal2"> Forget Password ?</a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal2" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">
+                                                        EMAIL : <br>
+                                                        Enter your email address
+                                                        that you used to sign up. We’ll send you an email with instructions on how to reset your password.
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="left-inner-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               placeholder="Enter Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary">Email</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-lg-push-2">
+                <div class="panel" style="border: solid">
+                    <div class="panel-heading" style="background-color:#2f2f2f">
+                        <p class="login">Login As Admin</p>
+                    </div>
+                    <div class="panel-body">
+                        <img src=@Url.Content("~/Image/admin.png") class="img-rounded center-block" alt="admin" width="234" height="279">
+
+                        <br>
+                        <form action=@Url.Action("CheckCredentials","Admin") method="post">
+                           
+                            <div class="left-inner-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="User Name" id="adminUserName" name="adminUserName" />
+
+                            </div>
+                            <div class="left-inner-addon">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                <input type="password"
+                                       class="form-control"
+                                       placeholder="Password" id="adminPassword" name="adminPassword" />
+                            </div>
+                            <br>
+
+                            <button type="submit" class="btn btn-primary center-block" style="width: 50%">Login</button>
+
+                            </form>
+                            <br>
+
+
+
+                            <a data-toggle="modal" id="forget" style="float: right" data-target="#myModal3"> Forget Password ?</a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal3" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">
+
+                                                Enter your email address
+
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="left-inner-addon">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="Enter Email" />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary">Email</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="section4">
+
+        <div class="col-md-12" style="width: 100%" id="backcolor">
+            <br>
+            <br>
+            <div class="col-md-4">
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px">
+                </div>
+                <span id="f_1">Visit : <a href="www.gcu.edu.pk">Govertment College University</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/">Department Of Computer Science</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Contact Information : <a href="http://www.gcu.edu.pk/Webmaster.htm">Contact</a></span>
+            </div>
+
+            <div class="col-md-4 col-offset-4 col-md-push-4">
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px">
+                </div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/admissions.html?link=bscs">Admission Information </a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/roadmap.html">Road Department Of Computer Science</a></span>
+                <br>
+                <div class="glyphicon glyphicon-triangle-right" style="color: white; font-size:24px"></div>
+                <span id="f_1">Visit : <a href="http://dcs.gcu.edu.pk/people.html">Our People</a></span>
+            </div>
+            <div class="col-md-12" id="footer">
+                <p id="f_x" style="text-align: center">© Copyright 2002- GOVERMENT COLLEGE UNIVERSITY , E-EXAMINATION AND ASSESSMENT SYSTEM<p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src=@Url.Content("~/Script/jquery.js")></script>
+    <script src=@Url.Content("~/Script/bootstrap.min.js")></script>
+
+</body>
+
+</html>

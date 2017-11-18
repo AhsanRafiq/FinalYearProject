@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Course List</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/CSS/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/Content/CSS/sb-admin.css" rel="stylesheet" />
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/CSS/morris.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/CSS/bootstrap-select.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="f"/>
+    <![endif]-->
+    
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="@Url.Action("Index","Admin")">Admin Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="@Url.Action("Index","Course")"><i class="fa fa-fw fa-dashboard"></i>Course</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Admin")"><i class="fa fa-fw fa-dashboard"></i>Back to Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper" style="height: 100%">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            View Course
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Following are the Courses
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- /.row -->
+
+                <div class="row">
+                    <Select class="selectpicker col-md-3" title="Session" id="sessionSelectOptions" onchange="getSemestersById(this.value)" style="display: inline-block;"></Select>
+                    <Select class="selectpicker col-md-3" title="Semester" id="semesterNoSelect" style="display: inline-block;"></Select>
+                    <button type="button" onclick="list()" class="btn btn-primary">Get</button>
+
+                    <br />
+                    <br />
+                    <br />
+                    <div>
+                        <table class="table table-striped table-bordered table-hover table-condensed table-responsives text-center">
+
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th class="text-center">Course Code</th>
+                                    <th class="text-center">Course Name</th>
+                                    <th class="text-center">Credit Hour</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbody"></tbody>
+
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/Script/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Script/bootstrap.min.js"></script>
+
+    <script src="~/Script/raphael.min.js"></script>
+    <script src="~/Script/morris.min.js"></script>
+    <script src="~/Script/morris-data.js"></script>
+
+    <script src="~/Script/bootstrap-select.min.js"></script>
+
+    <script src="@Url.Content("~/Ajax Scripts/Course.js")"></script>
+
+    <script>getSessions();</script>
+    <!-- Modal For Confirmation of Deletion -->
+    <div id="confirmDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Are you Sure?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="deleteCourse()">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal For Session Deletion Response -->
+    <div id="myDeleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Course Deleted</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal For Field Updation for update-->
+    <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Update Section
+                    </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+
+
+
+                    <h3>
+                        <label class="label label-default">Session</label>
+                    </h3>
+                    <div id="selectSessionOptions">
+
+
+                        <Select class="selectpicker" title="Choose one of the following" id="sessionSelectOptionsUpdate" onchange="getSemestersByIdUpdate(this.value)"></Select>
+
+                    </div>
+
+                    <h3>
+                        <label class="label label-default">Semester No</label>
+                    </h3>
+
+                    <div id="selectSemesterNo">
+
+                        <Select class="selectpicker" title="Choose one of the following" id="semesterNoSelectUpdate"></Select>
+
+                    </div>
+
+                    <h3>
+                        <label class="label label-default">Course Code</label>
+                    </h3>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="courseCodeUpdate">
+                    </div>
+
+                    <h3>
+                        <label class="label label-default">Course Name</label>
+                    </h3>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="courseNameUpdate">
+                    </div>
+
+                    <h3>
+                        <label class="label label-default">Credit Hour</label>
+                    </h3>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="creditHourUpdate">
+                    </div>
+
+                </div>
+                <br />
+
+
+                <br />
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" id="saveButton" class="btn btn-primary" onclick="updateCourse();" data-dismiss="modal">
+                    Save changes
+                </button>
+            </div>
+
+            <script>getSessionsUpdate();</script>
+        </div>
+    </div>
+    <div class="modal fade" id="updateSubjectResponse" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Database Updated</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

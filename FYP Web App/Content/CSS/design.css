@@ -1,0 +1,89 @@
+﻿
+body {
+    background-image: url('img/csdept.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#text{
+    color: white;
+    z-index: -1;
+    font-family: "Tw Cen MT";
+    font-size: 16pt;
+    padding-top: 15%;
+}
+#imglogo{
+    margin-right:1%;
+}
+
+#section1{
+    padding-bottom: 10%;
+}
+
+#section2{
+    padding-bottom: 05%;
+
+}
+#welcome{
+    font-family: "Tw Cen MT";
+    font-weight: bold;
+    font-size: 22pt;
+    text-align: center;
+}
+.login{
+    font-family: "Tw Cen MT";
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+#section3{
+    padding-bottom: 05%;
+}
+
+#backcolor{
+    background-color: #2f2f2f;
+
+
+}
+#f_1{
+    color: white;
+    font-family: "Tw Cen MT";
+    font-size: 15pt;
+    font-weight: bold;
+}
+#f_x{
+
+    color: white;
+    font-family: "Tw Cen MT";
+    font-size: 9pt;
+    font-weight: bold;
+
+}
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+    padding-righ: 10px;
+}
+
+#signup{
+    font-family: "Tw Cen MT";
+    font-weight: bold;
+    font-size: 12pt;
+    text-decoration: underline;
+    float: left;
+}
+#forget{
+    font-family: "Tw Cen MT";
+    font-weight: bold;
+    font-size: 12pt;
+    text-decoration: underline;
+}
+
